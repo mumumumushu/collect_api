@@ -24,7 +24,7 @@ Gemfile.lock
 
 
 config/application.yml
-config/application.smaple.yml
+config/application.sample.yml
 
 public/*
 doc/*
