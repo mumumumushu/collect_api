@@ -1,0 +1,58 @@
+defaults: &defaults
+  http:
+    Caiyun:
+      title: "彩云获取未来降雨"
+      url: "http://61.152.122.112:8080/api/city_weathers/real_time/rain_prec?appid=bFLKk0uV7IZvzcBoWJ1j&appkey=mXwnhDkYIG6S9iOyqsAW7vPVQ5ZxBe"
+      params:
+      header: 
+        Accept: "application/json"
+      describe:
+        period: "即时爬取"
+        project: "sh_weather"
+        remark: 
+
+
+    Moji:
+      title: "墨迹获取未来降雨"
+      url: "http://61.152.122.112:8080/api/city_weathers/real_time/rain_cast?appid=bFLKk0uV7IZvzcBoWJ1j&appkey=mXwnhDkYIG6S9iOyqsAW7vPVQ5ZxBe"
+      params:
+      header: 
+        Accept: "application/json"
+      describe:
+        period: "即时爬取"
+        project: "sh_weather"
+        remark:
+
+    CountryStation:
+      title: "cimiss 全国每日 \n降水量 温度/气温 瞬时风向 瞬时风速 1分钟平均水平能见度 气压 相对湿度"
+      url: "http://t.weather-huayun.com:8080/cimiss-web/api?userId=BCSH_SMSSC_kjfwzx&pwd=kjfwzx&interfaceId=getAllStationDataBytimes&minStaid=50134&maxStaid=59985&elements=Datetime,Station_Id_C,PRE,TEM,WIN_D_INST,WIN_S_INST,VIS_HOR_1MI,PRS,RHU&timeRange=(20170101000000,20170101020000)&orderby=Station_ID_C:ASC&dataCode=SURF_CHN_MUL_HOR_N&dataFormat=json"
+      params:
+        timeRange: "timeRange=(20170101000000,20170101020000)"
+      describe:
+        period: "每日数据 ，未运行"
+        project: "sh_weather"
+        remark: 
+
+    RealTimeAqiProcess:
+      title: "空气质量"
+      url: "http://www.semc.com.cn/home/index.aspx"
+      header:
+        User_Agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:13.0) Gecko/20100101 Firefox/13.0'
+      describe:
+        period: "即时爬取"
+        project: "sh_weather"
+        remark: "/实时空气质量状况(.*)实时空气质量指数：(.*?)(\d{2,3})(.*)首要污染物(.*?)对健康影响(.*)(建议措施.*)(过去|最近)24小时"
+
+
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+
